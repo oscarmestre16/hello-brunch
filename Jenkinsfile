@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {                
-               sh 'ssh -t deploy@10.250.12.1 'docker-compose pull & docker-compose up -d''
+               sh 'ssh -t deploy@10.250.12.1 'docker-compose pull & docker-compose up -d'
             }
         }
     }
