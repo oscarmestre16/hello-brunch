@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {   
-                sshagent (credentials:['deploy']){
+                sshagent (credentials:['gitlab-ssh-deploy']){
                    sh' ssh -t -o "StrictHostKeyChecking no" deploy@10.250.12.1 "docker-compose pull && docker-compose up -d"'                        
                 }
             }
