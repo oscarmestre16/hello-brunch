@@ -1,4 +1,3 @@
-
 #!/usr/bin/env groovy
 pipeline {
     agent any
@@ -13,9 +12,11 @@ pipeline {
                 sh 'docker-compose build'
             }
         }
-        stage('deploy') {
+        stage('Publish') {
             steps {
-                sh 'docker-compose up -d'
+                withDockerRegistry([credentialsId:"gitlab-registry", url:"http://10.250.12.1:5050"]){
+                    
+                }
             }
         }
     }
