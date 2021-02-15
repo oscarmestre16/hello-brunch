@@ -6,9 +6,7 @@ pipeline {
     }
     stages {
         stage('Build') {
-            steps {
-                //Rama main y no master
-               // git url: 'https://github.com/oscarmestre16/hello-brunch.git', branch:'main'
+            steps {                
                 sh 'docker-compose build'
             }
         }
