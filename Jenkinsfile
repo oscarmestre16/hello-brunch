@@ -26,10 +26,10 @@ pipeline {
             }
         }
         stage('Deploy') {
-            steps {                
-              // sh 'ssh -t deploy@10.250.12.1 'docker-compose pull & docker-compose up -d''
-              //sh 'ssh -t -o "StrictHostKeyChecking no" deploy@10.250.12.1 'docker-compose pull && docker-compose up -d''
-              ssh -t -o "StrictHostKeyChecking no" deploy@10.250.12.1 'docker-compose pull && docker-compose up -d'
+            steps {   
+                sshagent (credentials:['deploy']){
+                   sh' ssh -t -o "StrictHostKeyChecking no" deploy@10.250.12.1 "docker-compose pull && docker-compose up -d"'                        
+                }
             }
         }
     }
