@@ -5,7 +5,7 @@ pipeline {
         ansiColor('xterm')
     }
     environment {         
-        VERSION = "${env.BUILD_ID}"        
+        VERSION = "${BUILD_ID}"        
     }
     stages {
         stage('Build') {
