@@ -20,7 +20,7 @@ pipeline {
                     sh 'docker tag hello-brunch:latest 10.250.12.1:5050/root/hello-brunch:BUILD-1.${VERSION}'
                     sh 'docker push 10.250.12.1:5050/root/hello-brunch:BUILD-1.${VERSION}'
                     ssagent (credential:[gitlab-ssh]){
-                        sh 'git tag -a BUILD-1.${VERSION}'
+                        sh 'git tag BUILD-1.${VERSION}'
                         sh 'git push --tags'
                     }
                     
