@@ -1,7 +1,8 @@
 version: "3.0"
 services:
   web:
-    image: hello-brunch
-    build: .
+    image: 10.250.12.1:5050/root/hello-brunch:latest
     ports:
-      - "8080:80"
+      - "80:80"
+    deploy:
+     replicas: 10
