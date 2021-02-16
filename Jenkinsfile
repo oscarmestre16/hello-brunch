@@ -28,8 +28,8 @@ pipeline {
         stage('Deploy') {
             steps {   
                 sshagent (credentials:['gitlab-ssh-deploy']){
-                   sh 'docker pull hello-brunch:latest 10.250.12.1:5050/root/hello-brunch:BUILD-1.${VERSION}'
-                   sh 'ssh -t -o "StrictHostKeyChecking no" deploy@10.250.12.1 "docker-compose pull && docker-compose up -d"'                      
+                   sh 'docker pull 10.250.12.1:5050/root/hello-brunch:BUILD-1.${VERSION}'
+                   sh 'ssh -t -o "StrictHostKeyChecking no" deploy@10.250.12.1 "docker stack deploy --with-registry-auth -c docker-compose.yml brunch"'                      
                 }
             }
         }
